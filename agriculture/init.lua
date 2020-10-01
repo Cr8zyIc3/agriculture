@@ -37,9 +37,9 @@ core.register_craft( {
 	type = "cooking",
 	cooktime = 5,
 	output = "agriculture:salt 6",
-	recipe = "bucket:bucket_water",
+	recipe = "bucket:bucket_river_water",
 	replacements = {
-		{"bucket:bucket_water", "bucket:bucket_empty"}
+		{"bucket:bucket_river_water", "bucket:bucket_empty"}
 	},
 })
 
