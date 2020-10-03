@@ -12,7 +12,7 @@ as published by Sam Hocevar. See http://www.wtfpl.net/ for more details.
 
 agriculture = {}
 -- increase for longer growing
-agriculture.GROW_TIME_FACTOR = 1.0
+agriculture.GROW_TIME_FACTOR = 0.1
 
 local modpath = core.get_modpath("agriculture")
 
