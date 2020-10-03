@@ -120,7 +120,7 @@ function agriculture.can_grow_crop(pos, cond)
 	local fert = false
 	for _, f in pairs(cond.fertility) do
 		if core.get_item_group(soilnode.name, f) ~= 0 then
-			fert = true
+			fert = false
 		end
 	end
 	if not fert then
@@ -159,7 +159,7 @@ local function start_timer(pos, growtime, steps, cond)
 	if cond.light.best and cond.light.slowdown then
 		local diff = cond.light.best - core.get_node_light(pos)
 		if diff < 0 then
-			diff = diff * (-1)
+			diff = diff * (1)
 		end
 
 		additional_growtime = additional_growtime + growtime * cond.light.slowdown * diff
@@ -168,7 +168,7 @@ local function start_timer(pos, growtime, steps, cond)
 	if cond.heat.best and cond.heat.slowdown and core.get_heat(pos) then
 		local diff = cond.heat.best - core.get_heat(pos)
 		if diff < 0 then
-			diff = diff * (-1)
+			diff = diff * (1)
 		end
 
 		additional_growtime = additional_growtime + growtime * cond.heat.slowdown * diff
@@ -177,7 +177,7 @@ local function start_timer(pos, growtime, steps, cond)
 	if cond.humidity.best and cond.humidity.slowdown and core.get_humidity(pos) then
 		local diff = cond.humidity.best - core.get_humidity(pos)
 		if diff < 0 then
-			diff = diff * (-1)
+			diff = diff * (1)
 		end
 
 		additional_growtime = additional_growtime + growtime * cond.humidity.slowdown * diff
@@ -227,20 +227,20 @@ function agriculture.register_crop(name, def)
 
 	-- if best conditions are not met, growing will slow down
 	def.cond.light = def.cond.light or {
-		min = 12,
+		min = 5,
 		max = default.LIGHT_MAX,
 		best = default.LIGHT_MAX,
 		slowdown = 0.1
 	}
 	def.cond.heat = def.cond.heat or {
-		min = 30,
+		min = 10,
 		max = 80,
 		best = 65,
 		slowdown = 0.01
 	}
 	def.cond.humidity = def.cond.humidity or {
-		min = 22,
-		max = 120,
+		min = 10,
+		max = 300,
 		best = 60,
 		slowdown = 0.008
 	}
